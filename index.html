@@ -11,15 +11,17 @@
 		}
 		.clearfix {zoom: 1;}
 		body {color: white; font-family: Microsoft YaHei; font-size: large; margin: 0 auto;}
-		#header {background: #F0D62D; padding: 0;}
+		#header {background: white; padding: 0;}
 		#header {height: 38px;}
 		
-		#layout {background: white}
+		#layout {background: white;}
 		
-		html, body, aside {height:100%; width:100%; margin:0; padding:0;}
+		#aside {float: right; width: 280px; background: #333399;}
+		#body {background: #99CCFF; margin-right: 290px;}
+		
+		html, body, aside {height:100%; width:100%;}
 		div {height: 100%; width: 100%;}
-		#aside {float: right; width: 280px; background: #74C23F}
-		#body {background: #64A4F9; margin-right: 280px;}
+
 		.bigfont {color: white; font-family: Microsoft YaHei; font-size: 27px;}
 		.middlefont {color: white; font-family: Microsoft YaHei; font-size: 24px;}
 		.generalfont {color: white; font-family: Microsoft YaHei; font-size: 18px;}
@@ -27,10 +29,10 @@
 		.icon {float: left; width: 120px; height: 212px; margin-right: 20px; margin-bottom: 20px; margin-top: 5px; margin-left: 5px;}
 		
 		<style type="text/css">
-		A:link {color: yellow}
-		A:visited {color: gray}
-		A:active {color: green}
-		A:hover {color: white}
+		A:link {color: white;}
+		A:visited {color: gray;}
+		A:active {color: green;}
+		A:hover {color: white;}
 		</style>
 	</style>
 </head>
@@ -38,7 +40,7 @@
 我的個人主頁
 </title>
 <body>
-	<div id="header"><marquee class="bigfont" behavior="alternate">歡迎來到我的個人主頁</marquee></div>
+	<div id="header"><marquee class="bigfont" behavior="alternate" style="color: #333399;">歡迎來到我的個人主頁</marquee></div>
 	<div id="layout" class="clearfix">
 	<div id="aside" class="generalfont">
 	<nav>
@@ -47,7 +49,7 @@
 				<ul>
 					<li class="generalfont">Web前端課程展示</li>
 						<ul>
-							<li><a href="index.html" class="smallfont">第一次作業</a></li>
+							<li><a href="hw1.html" class="smallfont">第一次作業</a></li>
 						</ul>
 					<li class="generalfont">課程日誌</li>
 						<ul>
