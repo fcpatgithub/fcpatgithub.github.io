@@ -11,6 +11,7 @@ e.onclick = function(){sortByReply()}
 e.style.cssText = "margin: 10px; font-family = Microsoft YaHei";
 h3.appendChild(d);
 h3.appendChild(e);
+var x = 0;
 $('div a').each(function(){this.style.cssText = this.style.cssText + "font-family: Microsoft YaHei"; x++;});
 function sortByView()
 {
