@@ -1,0 +1,1 @@
+i=1;$("[class^=lh30]").each(function(){r=document.createElement("td");r.innerText=i.toString();r.style.cssText="margin-left:10px;display:block;";r.width="5%";this.insertBefore(r,this.firstChild);i++;});$('a.red.bold').each(function(){this.innerHTML='1073741824';})
