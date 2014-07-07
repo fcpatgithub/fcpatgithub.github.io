@@ -1,0 +1,27 @@
+﻿var ulTags = document.getElementsByTagName('ul');
+var li = document.createElement('li');
+var a = document.createElement('a');
+var h2 = document.createElement('h2');
+var p = document.createElement('p');
+var span = document.createElement('span');
+var img = document.createElement('img');
+var h2a = document.createElement('a');
+var pa = document.createElement('a');
+a.className = "imgwrap"
+span.className = "play";
+img.src = "http://learn.cic.tsinghua.edu.cn:80/res/fzjx/images/index/2_19.jpg";
+img.style.cssText = "width: 230px; height: 134px;";
+h2.className = "coursename";
+h2a.innerText = "Web前端技术实训（软件学院）";
+p.className = "p";
+pa.className = "name";
+pa.innerText = "刘强";
+a.appendChild(span);
+a.appendChild(img);
+h2.appendChild(h2a);
+p.appendChild(pa);
+li.appendChild(a);
+li.appendChild(h2);
+li.appendChild(p);
+ulTags[0].insertBefore(li, ulTags[0].children[1]);
+ulTags[0].children[8].remove();
