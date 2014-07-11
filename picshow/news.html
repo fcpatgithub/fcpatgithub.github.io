@@ -1,0 +1,421 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+	li{
+		font-family:Microsoft YaHei, STHeiti, Arial;
+		font-size: 18px;
+	}
+	html,body{
+		height: 90%;
+		font-size: 100%;
+		background: black;
+	}
+	#focus{
+		width: 75%;
+		height: 100%;
+		overflow: hidden;
+		position: relative;
+		margin:30px auto;
+	}
+	#focusPic{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		left: 0px;
+		margin: 0;
+		padding: 0;
+		onmouseover: showNandP();
+		onmouseout: hideNandP();
+	}
+	#focusPic li{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+	}
+	#focusText{
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		left: 0px;
+		bottom: 0px;
+		width: 100%;
+		height: 80px;
+		line-height: 76px;
+		text-indent: 24px;
+		font-family: Microsoft YaHei;
+		font-size: 1.5rem;
+		color: white;
+	}
+	#focusText li{
+		position: relative;
+	}
+	#focus ul{list-style-type: none;}
+	#nextPic{
+		width: 34px;
+		height: 57px;
+		top: 50%;
+		z-index: 4;
+		background: url(next.png) no-repeat;
+		position: absolute;
+		right: 0px;
+		opacity: 0;
+	}
+	#previousPic{
+		width: 34px;
+		height: 57px;
+		top: 50%;
+		z-index: 4;
+		background: url(previous.png) no-repeat;
+		position: absolute;
+		left: 0px;
+		opacity: 0;
+	}
+	img{
+		float: left;
+		width: 100%;
+		height: 100%;
+		transition: opacity 0.5s;
+	}
+	img:hover{
+		opacity: 0.5;
+	}
+	#commentText{
+		position: relative;
+		width: 75%;
+		height: 200px;
+		margin: 0 auto;
+	}
+	#userName{
+		position: relative;
+		width: 20%;
+		height: 22px;
+		font-family: Microsoft YaHei, Arial;
+		font-size: 1rem;
+		margin-bottom: 10px;
+	}
+	#userComment{
+		position: relative;
+		width: 100%;
+		height: 40%;
+		font-family: Arial;
+		font-size: 1rem;
+	}
+	#comments{
+		position: relative;
+		width: 75%;
+		height: auto;
+		margin: 0 auto;
+	}
+	#previousPage, #nextPage{
+		position: relative;
+		cursor: pointer;
+		float: right;
+		border: 1px solid #e5e5e5;
+		padding: 5px;
+		font-family: Arial;
+		color: white;
+		background: black;
+	}
+	#previousPage{margin-right: 10px;}
+	.uc{
+		border-bottom: 1px solid white;
+		padding-bottom: 10px;
+		margin-bottom: 12px
+	}
+</style>
+<script src="jquery-2.1.1.js"></script>
+<script>
+var currentpic = 0;
+var totalpic = 0;
+var int = self.setInterval("nextpic()", 6000);
+var totalcomment = 0;
+var currentpage = 1;
+var totalpage = 1;
+var commentsperpage = 10;
+var comments = [];
+var username;
+var usercomment;
+function loadStorage()
+{
+	if(localStorage.username)
+	{
+		username = localStorage.username;
+		$("textarea")[0].innerHTML = username;
+		$("textarea")[0].value = username;
+	}
+	else username = "Anonymous";
+	if(localStorage.usercomment)
+	{
+		usercomment = localStorage.usercomment;
+		$("textarea")[1].innerHTML = usercomment;
+		$("textarea")[1].value = usercomment;
+	}
+	else usercomment = "Leave your comment!";
+}
+$.getJSON("news.json", function(jsonobj){
+	totalpic = jsonobj.length;
+	for(var i = 0; i < jsonobj.length; i++)
+	{
+		var l = document.createElement("li");
+		var l2 = document.createElement("li");
+		l2.innerHTML = jsonobj[i].title;
+		if(i == 0) l2.style.cssText = "display: block;";
+		else l2.style.cssText = "display: none";
+		l2.style.zIndex = 3;
+		var p = document.createElement("img");
+		p.src = jsonobj[i].pic;
+		$("#focus ul")[1].appendChild(l2);
+		l.appendChild(p);
+		if(i == 0) l.style.cssText = "z-index: 2; opacity: 1;";
+		else l.style.cssText = "z-index: 1; opacity: 0;";
+		$("#focus ul")[0].appendChild(l);
+	}
+});
+$.getJSON("comment.json", function(jsonobj){
+	totalcomment = jsonobj.length;
+	totalpage = Math.ceil(jsonobj.length / commentsperpage);
+	for(var i = 0; i < jsonobj.length; i++)
+	{
+		comments[i] = jsonobj[i];
+		if(i < commentsperpage)
+		{
+			var maindiv = document.createElement("div");
+			var icondiv = document.createElement("div");
+			var namediv = document.createElement("div");
+			var commentdiv_main = document.createElement("div");
+			var commentdiv_comment = document.createElement("div");
+			var commentdiv_info = document.createElement("div");
+			var icon = document.createElement("span");
+			var name = document.createElement("p");
+			var comment = document.createElement("p");
+			var info = document.createElement("span");
+			icon.style.cssText = ("float: left; width: 25px; height: 28px; background: url(kl.png) no-repeat;")
+			name.innerHTML = jsonobj[i].user;
+			name.style.cssText = "font-family: Microsoft YaHei, Arial; font-size: 1em; color: white;"
+			comment.innerHTML = jsonobj[i].comment;
+			comment.style.cssText = "font-family: Microsoft YaHei, Arial; font-size: 1.5em; color: white;"
+			info.innerHTML = jsonobj[i].info;
+			info.style.cssText = "font-family: Microsoft YaHei, Arial; font-size: 0.5em; color: white;"
+			icondiv.appendChild(icon);
+			namediv.appendChild(name);
+			commentdiv_comment.appendChild(comment);
+			commentdiv_info.appendChild(info);
+			commentdiv_main.appendChild(commentdiv_comment);
+			commentdiv_main.appendChild(commentdiv_info);
+			maindiv.appendChild(icondiv);
+			maindiv.appendChild(namediv);
+			maindiv.appendChild(commentdiv_main);
+			maindiv.className = "uc";
+			$("#comments")[0].appendChild(maindiv);
+		}
+	}
+	if(comment.length < 10)
+	{
+		$("#message p")[0].innerHTML = "Showing comments: 1 to " + String(comments.length);
+	}
+	else
+	{
+		$("#message p")[0].innerHTML = "Showing comments: 1 to 10";
+	}
+		$("#message p")[1].innerHTML = "Totally " + String(comments.length) + " comments.";
+});
+function showNandP(){
+	$("#nextPic")[0].style.opacity = 1;
+	$("#previousPic")[0].style.opacity = 1;
+	int = window.clearInterval(int);
+}
+function hideNandP(){
+	$("#nextPic")[0].style.opacity = 0;
+	$("#previousPic")[0].style.opacity = 0;
+	int = window.setInterval("nextpic()", 6000);
+}
+function nextpic(){
+	var nextpic = currentpic + 1;
+	if(nextpic >= totalpic) nextpic = 0;
+	$("#focusPic li")[currentpic].className = "currentpic";
+	$("#focusText li")[currentpic].className = "currentText";
+	$("#focusPic li.currentpic")[0].style.zIndex = 1;
+	$("#focusPic li.currentpic").animate({
+		opacity:'0'
+	})
+	$("#focusText li.currentText")[0].style.display = "none";
+	$("#focusText li")[nextpic].className = "currentText";
+	$("#focusPic li")[nextpic].className = "currentpic";
+	$("#focusPic li")[currentpic].className = "";
+	$("#focusText li")[currentpic].className = "";
+	$("#focusPic li.currentpic")[0].style.zIndex = 2;
+	$("#focusPic li.currentpic").animate({
+		opacity:'1'
+	})
+	$("#focusText li.currentText")[0].style.display = "block";
+	currentpic = nextpic;
+}
+function previouspic(){
+	var previouspic = currentpic - 1;
+	if(previouspic < 0) previouspic = totalpic - 1;
+	$("#focusPic li")[currentpic].className = "currentpic";
+	$("#focusText li")[currentpic].className = "currentText";
+	$("#focusPic li.currentpic")[0].style.zIndex = 1;
+	$("#focusPic li.currentpic").animate({
+		opacity:'0'
+	})
+	$("#focusText li.currentText")[0].style.display = "none";
+	$("#focusText li")[previouspic].className = "currentText";
+	$("#focusPic li")[previouspic].className = "currentpic";
+	$("#focusPic li")[currentpic].className = "";
+	$("#focusText li")[currentpic].className = "";
+	$("#focusPic li.currentpic")[0].style.zIndex = 2;
+	$("#focusPic li.currentpic").animate({
+		opacity:'1'
+	})
+	$("#focusText li.currentText")[0].style.display = "block";
+	currentpic = previouspic;
+}
+function getUserName(){
+	localStorage.username = $("#userName")[0].value;
+	username = $("#userName")[0].value;
+}
+function getUserComment(){
+	localStorage.usercomment = $("#userComment")[0].value;
+	usercomment = $("#userComment")[0].value;
+}
+function submitComment(){
+	var date = new Date();
+	var maindiv = document.createElement("div");
+	var icondiv = document.createElement("div");
+	var namediv = document.createElement("div");
+	var commentdiv_main = document.createElement("div");
+	var commentdiv_comment = document.createElement("div");
+	var commentdiv_info = document.createElement("div");
+	var icon = document.createElement("span");
+	var name = document.createElement("p");
+	var comment = document.createElement("p");
+	var info = document.createElement("span");
+	icon.style.cssText = ("float: left; width: 25px; height: 28px; background: url(kl.png) no-repeat;")
+	name.innerHTML = username;
+	name.style.cssText = "font-family: Microsoft YaHei, Arial; font-size: 1em; color: white;"
+	comment.innerHTML = usercomment;
+	comment.style.cssText = "font-family: Microsoft YaHei, Arial; font-size: 1.5em; color: white;"
+	info.innerHTML = date.toLocaleString();
+	info.style.cssText = "font-family: Microsoft YaHei, Arial; font-size: 0.5em; color: white;"
+	icondiv.appendChild(icon);
+	namediv.appendChild(name);
+	commentdiv_comment.appendChild(comment);
+	commentdiv_info.appendChild(info);
+	commentdiv_main.appendChild(commentdiv_comment);
+	commentdiv_main.appendChild(commentdiv_info);
+	maindiv.appendChild(icondiv);
+	maindiv.appendChild(namediv);
+	maindiv.appendChild(commentdiv_main);
+	maindiv.className = "uc";
+	newcomment = {"comment": usercomment, "icon": "kl.png", "info":date.toLocaleString(), "user":username};
+	for(var i = comments.length - 1; i >= 0; i--)
+	{
+		comments[i + 1] = comments[i];
+	}
+	comments[0] = newcomment;
+	if(currentpage == 1)
+	{
+		$("#comments")[0].insertBefore(maindiv, $("#comments")[0].firstChild);
+		$("#comments .uc")[$("#comments .uc").length - 1].remove();
+	}
+	totalcomment++;
+	totalpage = Math.ceil(totalcomment / commentsperpage);
+	$("#message p")[1].innerHTML = "Totally " + String(totalcomment) + " comments."; 
+	alert("Thanks for leaving your comment!");
+}
+function switchpage(n)
+{
+	if(currentpage + n < 1)
+	{
+		alert("It's the first page already!");
+		return;
+	}
+	else if(currentpage + n > totalpage)
+	{
+		alert("It's the last page already!");
+		return;
+	}
+	var len = $("#comments .uc").length;
+	var com = $("#comments .uc");
+	for(var i = 0; i < len; i++)
+	{
+		com[i].remove();
+	}
+	currentpage = currentpage + n;
+	for(var i = (currentpage - 1) * commentsperpage; i < currentpage * commentsperpage; i++)
+	{
+		if(i >= comments.length) break;
+		var maindiv = document.createElement("div");
+		var icondiv = document.createElement("div");
+		var namediv = document.createElement("div");
+		var commentdiv_main = document.createElement("div");
+		var commentdiv_comment = document.createElement("div");
+		var commentdiv_info = document.createElement("div");
+		var icon = document.createElement("span");
+		var name = document.createElement("p");
+		var comment = document.createElement("p");
+		var info = document.createElement("span");
+		icon.style.cssText = ("float: left; width: 25px; height: 28px; background: url(kl.png) no-repeat;")
+		name.innerHTML = comments[i].user;
+		name.style.cssText = "font-family: Microsoft YaHei, Arial; font-size: 1em; color: white;"
+		comment.innerHTML = comments[i].comment;
+		comment.style.cssText = "font-family: Microsoft YaHei, Arial; font-size: 1.5em; color: white;"
+		info.innerHTML = comments[i].info;
+		info.style.cssText = "font-family: Microsoft YaHei, Arial; font-size: 0.5em; color: white;"
+		icondiv.appendChild(icon);
+		namediv.appendChild(name);
+		commentdiv_comment.appendChild(comment);
+		commentdiv_info.appendChild(info);
+		commentdiv_main.appendChild(commentdiv_comment);
+		commentdiv_main.appendChild(commentdiv_info);
+		maindiv.appendChild(icondiv);
+		maindiv.appendChild(namediv);
+		maindiv.appendChild(commentdiv_main);
+		maindiv.className = "uc";
+		$("#comments")[0].appendChild(maindiv);
+	}
+	$("#message p")[0].innerHTML = "Showing comments: " + String((currentpage - 1) * commentsperpage + 1) + " to " + String((currentpage - 1) * commentsperpage + $("#comments .uc").length); 
+}
+</script> 
+</head>
+<title>News</title>
+<body onload=loadStorage()>
+<!--<button onclick=previouspic()>previous</button>-->
+<!--<button onclick=nextpic()>next</button>-->
+<div id="focus">
+<ul id="focusPic" onmouseover=showNandP() onmouseout=hideNandP()>
+<span id="nextPic" onclick=nextpic()></span>
+<span id="previousPic" onclick=previouspic()></span>
+</ul>
+<ul id="focusText">
+</ul>
+</div>
+<div id="commentText">
+<p style="margin-bottom: 0; color: white;">Your name:</p>
+<textarea id="userName" onchange=getUserName()>Anonymous</textarea>
+<p style="margin-bottom: 0; margin-top: 0; color: white;">Your comment:</p>
+<textarea id="userComment" onchange=getUserComment()>Leave your comment here!</textarea>
+<button onclick=submitComment()>submit</button>
+</div>
+<div style="position: relative; width: 75%; height: 100px; margin: 0 auto; top: 15px;">
+<p style="font-family:Arial; font-size: 1.5em; color: white; display: inline;">Comments:</p>
+<button id="nextPage" onclick=switchpage(1)>next page</button>
+<button id="previousPage" onclick=switchpage(-1)>previous page</button>
+<div id="message">
+<p style="font-family:Arial; font-size: 0.5em; color: white; display: block;"></p>
+<p style="font-family:Arial; font-size: 0.5em; color: white; display: block;"></p>
+</div>
+</div>
+<div id="comments">
+</div>
+<div style="position: relative; margin: 0 auto; width: 75%; height: 50px;">
+<button id="nextPage" onclick=switchpage(1)>next page</button>
+<button id="previousPage" onclick=switchpage(-1)>previous page</button>
+</div>
+</body>
+</html>
