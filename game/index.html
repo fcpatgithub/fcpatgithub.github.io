@@ -11,16 +11,16 @@
 <script src="javascript/AI.js"></script>
 </head>
 <title>中国勇夺世界杯</title>
-<body style="height: 100%l" onload=build()>
+<body style="height: 100%;" onload=build()>
 <div id="cityInfo">
 <p class="countryName"></p>
 </div>
 <div id="command" class="side">
-<p id="turn"></p>
-<button id="train" style="background: url(others/train.jpg)"></button><span id="trainText">Train</span>
-<button id="war" style="background: url(others/war.jpg)"></button><span id="warText">War</span>
-<button id="cancel" style="background: url(others/cancel.jpg)"></button><span id="cancelText">Cancel</span>
-<button id="endturn" style="background: url(others/endturn.jpg)"></button><span id="endText">End</span>
+<div style="margin-top: 30px;"><button id="help" style="background: url(others/help.jpg)"><div id="info"></div></button><span id="helpText" class="text">Help</span><p id="turn"></p></div>
+<button id="train" style="background: url(others/train.jpg)"></button><span id="trainText" class="text">Train</span>
+<button id="war" style="background: url(others/war.jpg)"></button><span id="warText" class="text">War</span>
+<button id="cancel" style="background: url(others/cancel.jpg)"></button><span id="cancelText" class="text">Cancel</span>
+<button id="endturn" style="background: url(others/endturn.jpg)"></button><span id="endText" class="text">End</span>
 <p style="margin-top:18px; margin-right:0px; margin-bottom:0px; margin-left:50px; font-family:Century Gothic;">Message:</p>
 <p id="message">欢迎!</p>
 <p id="countryMessage"></p>
@@ -28,5 +28,5 @@
 <table id="map">
 </table>
 </body>
-<audio src="We Are One.mp3" autoplay></audio>
+<!--<audio src="We Are One.mp3" autoplay></audio>-->
 </html>

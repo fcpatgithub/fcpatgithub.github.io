@@ -52,6 +52,7 @@ function build(){
 	$("#cancel").bind("click", toViewMode);
 	$("#train").bind("click", toTrainMode);
 	$("#endturn").bind("click", endTurn);
+	$("#help").bind({"mouseover": showHelp, "mouseout": hideHelp});
 	$("#turn")[0].innerHTML = "Turn: " + totalTurn;
 	$("#war")[0].disabled = true;
 	$("#cancel")[0].disabled = true;

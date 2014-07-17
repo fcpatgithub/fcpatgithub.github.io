@@ -8,18 +8,20 @@ button{
 	border-radius: 10px;
 	transition: opacity 0.5s;
 }
+#help{opacity: 1; margin-left: 65px;}
 #trainText, #cancelText, #warText, #endText{
 	opacity: 0;
 	transition:opacity 0.5s;
 }
-#train, #cancel{margin-left: 80px;}
-#endturn{margin-left: 15px;}
-#war{margin-left: 30px;}
+#train, #cancel{margin-left: 65px;}
+#endturn{margin-left: 30px;}
+#war{margin-left: 45px;}
 #turn{
 	margin-left: 60px;
-	margin-top: 60px;
-	font-family: arial;
+	margin-right: 0px;
+	font-family: Rockwell;
 	font-size: 18px;
+	display: inline;
 }
 #map{
 	border: 3px outset black;
@@ -51,16 +53,19 @@ button{
 #countryMessage{
 	height: 100px;
 }
+.text{
+	font-family: Rockwell;
+}
 .countryName{
 	margin: 20px;
-	font-family: Arial;
-	font-size: 18px;
+	font-family: Rockwell;
+	font-size: 24px;
 }
 
 .money{
 	color: blue;
-	margin: 15px;
-	font-family: Arial;
+	margin: 20px;
+	font-family: Century Gothic;
 	font-size: 18px;
 }
 
@@ -251,8 +256,7 @@ img#head {
                 transition: all 0.5s ease-in-out; /* Browsers that Support it */
     
             }
-            
-   
+
 div :hover > img#head {
     visibility:visible;
     opacity: 1;
@@ -265,3 +269,38 @@ div :hover > img#head {
                 transition: all 0.5s ease-in-out; /* Browsers that Support it */
     
             }
+			
+#info{
+	font-weight:bold;
+                width: 0px;
+                min-height: 0px;
+    position: absolute;
+                display: inline;
+                margin-left: -525px;
+                padding: 5px;
+                opacity: 0;
+                margin-top: 25px;
+    background: #F0F8FF;
+	font-family: Microsoft YaHei;
+    font-size:1.5em;
+	overflow: auto;
+    
+    /* Setting the border-radius property for all Browsers */
+                -moz-border-radius: 5px; /* Firefox */
+                -webkit-border-radius: 5px; /* Safari and Chrome */
+                border-radius: 5px; /* Browsers that Support it like Opera */
+    
+    /* Setting the box-shadow property for all Browsers */
+                -moz-box-shadow: 0 0 8px gray; /* Firefox */
+                -webkit-box-shadow: 0 0 8px gray; /* Safari and Chrome */
+                 filter: progid:DXImageTransform.Microsoft.Shadow(color='#272229', Direction=135, Strength=3); /* IE */
+                box-shadow: 0 0 8px gray; /* Browsers that Support it like Opera */
+    /* Setting the transition property for all Browsers */
+                -moz-transition: all 0.5s ease-in-out; /* Firefox */
+                -webkit-transition: all 0.5s ease-in-out; /* Safari and Chrome */
+                -o-transition: all 0.5s ease-in-out; /* Opera */
+                transition: all 0.5s ease-in-out; /* Browsers that Support it */
+}
+.player > span{
+	font-family: Verdana;
+}

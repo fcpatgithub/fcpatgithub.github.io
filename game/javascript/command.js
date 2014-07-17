@@ -76,3 +76,20 @@ function endTurn(){
 	$("#turn")[0].innerHTML = "Turn: " + totalTurn;
 	$("#cityInfo")[0].style.overflow = "auto";
 }
+function showHelp(){
+	$("#info")[0].style.opacity = 0.8;
+	$("#info")[0].style.width = "500px";
+	$("#info")[0].style.height = "400px";
+	$("#info")[0].innerHTML = "带领中国队淘汰其他国家，勇夺世界杯吧！<br><br>在地图中选取中国队，右方会出现命令页面，同时左方会出现球员名单！";
+	$("#info")[0].innerHTML += "每个回合可以获得金钱，金钱可以用来训练球员！点选训练按钮，选择你喜欢的球员进行培训！点选战争按钮，选择你想移动到的区域，如果该区域为其他国家，则会与该国家开始比赛！<br>";
+	$("#info")[0].innerHTML += "比赛胜利可以获得对方最好的球员以及他们一半的金钱，比赛失败则相反！";
+	$("#info")[0].innerHTML += "当某个国家失去所有球员，则宣告出局！<br><br>";
+	$("#info")[0].innerHTML += "地形系统：为了挽救我国不堪入目的足球水平，加入地形系统作平衡~中国队在非草地地形上战斗，会有很大的优势哦，";
+	$("#info")[0].innerHTML += "尽量在其他国家所处地形不佳时再发起挑战吧！(比赛结算考虑双方地形)<br><br>"
+	$("#info")[0].innerHTML += "你的目标是将其他国家都淘汰出局，争取成为笑到最后的那个吧！<br>"
+}
+function hideHelp(){
+	$("#info")[0].style.opacity = 0;
+	$("#info")[0].style.width = "0";
+	$("#info")[0].style.height = "0";
+}

@@ -44,7 +44,6 @@
 		}
 		else
 		{
-			debugger;
 			if(s.hasClass(city))//若为其他国家，左方载入该国家信息
 			{
 				$("#cityInfo")[0].innerHTML = "<p class='countryName'></p>"+"<p class='money'> </p>";
@@ -197,6 +196,7 @@
 				$("#train")[0].style.opacity = 0;
 				$("#trainText")[0].style.opacity = 0;
 				$("#endturn")[0].style.opacity = 1;
+				$("#endText")[0].style.opacity = 1;
 				$("#war")[0].disabled = true;
 				$("#train")[0].disabled = true;
 				$("#cancel")[0].disabled = true;
