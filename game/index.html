@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="javascript/jquery-2.1.1.js"></script>
+<script src="javascript/build.js"></script>
+<script src="javascript/event.js"></script>
+<script src="javascript/command.js"></script>
+<script src="javascript/battle.js"></script>
+<script src="javascript/AI.js"></script>
+</head>
+<title>中国勇夺世界杯</title>
+<body style="height: 100%l" onload=build()>
+<div id="cityInfo">
+<p class="countryName"></p>
+</div>
+<div id="command" class="side">
+<p id="turn"></p>
+<button id="train" style="background: url(others/train.jpg)"></button><span id="trainText">Train</span>
+<button id="war" style="background: url(others/war.jpg)"></button><span id="warText">War</span>
+<button id="cancel" style="background: url(others/cancel.jpg)"></button><span id="cancelText">Cancel</span>
+<button id="endturn" style="background: url(others/endturn.jpg)"></button><span id="endText">End</span>
+<p style="margin-top:18px; margin-right:0px; margin-bottom:0px; margin-left:50px; font-family:Century Gothic;">Message:</p>
+<p id="message">欢迎!</p>
+<p id="countryMessage"></p>
+</div>
+<table id="map">
+</table>
+</body>
+</html>

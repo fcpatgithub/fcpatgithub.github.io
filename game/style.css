@@ -1,0 +1,267 @@
+body{overflow: hidden;}
+button{
+	//margin-left: 80px;
+	margin-top: 30px;
+	width: 50px;
+	height: 50px;
+	opacity: 0;
+	border-radius: 10px;
+	transition: opacity 0.5s;
+}
+#trainText, #cancelText, #warText, #endText{
+	opacity: 0;
+	transition:opacity 0.5s;
+}
+#train, #cancel{margin-left: 80px;}
+#endturn{margin-left: 15px;}
+#war{margin-left: 30px;}
+#turn{
+	margin-left: 60px;
+	margin-top: 60px;
+	font-family: arial;
+	font-size: 18px;
+}
+#map{
+	border: 3px outset black;
+	margin: 0 auto;
+	overflow: hidden;
+	height: 100%;
+}
+#cityInfo{
+	float: left;
+	width: 350px;
+	height: 600px;
+	border: 3px outset black;
+	overflow: auto;
+	//background-color: black;
+}
+#command{
+	float: right;
+	width: 350px;
+	height: 600px;
+	//background-color: black;
+}
+#message, #countryMessage{
+	margin-top: 5px;
+	margin-left: 63px;
+	width: 240px;
+	overflow: auto;
+	font-family: Microsoft YaHei;
+}
+#countryMessage{
+	height: 100px;
+}
+.countryName{
+	margin: 20px;
+	font-family: Arial;
+	font-size: 18px;
+}
+
+.money{
+	color: blue;
+	margin: 15px;
+	font-family: Arial;
+	font-size: 18px;
+}
+
+.side{
+	font-family: Arial;
+	font-size: 18px;
+	width: 350px;
+	height: 600px;
+	//border: 3px outset black;
+	background: url(others/green_frame.jpg);
+}
+
+.player:hover{
+	border:2px solid #a1a1a1;
+	border-radius:25px;
+	-moz-border-radius:25px; 
+}
+
+#teamA{
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	left: 25px;
+	top: 20px;
+	animation:movedown 2s;
+	-moz-animation:movedown 2s; /* Firefox */
+	-webkit-animation:movedown 2s; /* Safari and Chrome */
+	-o-animation:movedown 2s; /* Opera */
+	
+	
+	transition: opacity 2s;
+	-moz-transition: opacity 2s;	/* Firefox 4 */
+	-webkit-transition: opacity 2s;	/* Safari ©M Chrome */
+	-o-transition: opacity 2s;	/* Opera */
+}
+
+#teamB{
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	left: 200px;
+	top: 420px;
+	animation:moveup 2s;
+	-moz-animation:moveup 2s; /* Firefox */
+	-webkit-animation:moveup 2s; /* Safari and Chrome */
+	-o-animation:moveup 2s; /* Opera */
+	
+	transition: opacity 2s;
+	-moz-transition: opacity 2s;	/* Firefox 4 */
+	-webkit-transition: opacity 2s;	/* Safari ©M Chrome */
+	-o-transition: opacity 2s;	/* Opera */
+}
+
+@keyframes movedown
+{
+from {left: 25px;
+	top: 20px;}
+to {left: 75px;
+	top: 120px;}
+}
+
+@-moz-keyframes movedown /* Firefox */
+{
+from {left: 25px;
+	top: 20px;}
+to {left: 75px;
+	top: 120px;}
+}
+
+@-webkit-keyframes movedown /* Safari and Chrome */
+{
+from {left: 25px;
+	top: 20px;}
+to {left: 75px;
+	top: 120px;}
+}
+
+@-o-keyframes movedown /* Opera */
+{
+from {left: 25px;
+	top: 20px;}
+to {left: 75px;
+	top: 120px;}
+}
+
+@keyframes moveup
+{
+from {left: 200px;
+	top: 420px;}
+to {left: 150px;
+	top: 320px;}
+}
+
+@-moz-keyframes moveup /* Firefox */
+{
+from {left: 200px;
+	top: 420px;}
+to {left: 150px;
+	top: 320px;}
+}
+
+@-webkit-keyframes moveup /* Safari and Chrome */
+{
+from {left: 200px;
+	top: 420px;}
+to {left: 150px;
+	top: 320px;}
+}
+
+@-o-keyframes moveup /* Opera */
+{
+from {left: 200px;
+	top: 420px;}
+to {left: 150px;
+	top: 320px;}
+}
+
+#map tr  td> div {		
+	font-weight:bold;
+                width: 40px;
+                min-height: 10px;
+    position: absolute;
+                display: inline;
+                margin-left: 60px;
+                padding: 5px;
+    visibility:hidden;
+                opacity: 0;
+                margin-top: -25px;
+    background: #F0F8FF;
+    font-size:1em;
+    
+    /* Setting the border-radius property for all Browsers */
+                -moz-border-radius: 5px; /* Firefox */
+                -webkit-border-radius: 5px; /* Safari and Chrome */
+                border-radius: 5px; /* Browsers that Support it like Opera */
+    
+    /* Setting the box-shadow property for all Browsers */
+                -moz-box-shadow: 0 0 8px gray; /* Firefox */
+                -webkit-box-shadow: 0 0 8px gray; /* Safari and Chrome */
+                 filter: progid:DXImageTransform.Microsoft.Shadow(color='#272229', Direction=135, Strength=3); /* IE */
+                box-shadow: 0 0 8px gray; /* Browsers that Support it like Opera */
+    /* Setting the transition property for all Browsers */
+                -moz-transition: all 0.5s ease-in-out; /* Firefox */
+                -webkit-transition: all 0.5s ease-in-out; /* Safari and Chrome */
+                -o-transition: all 0.5s ease-in-out; /* Opera */
+                transition: all 0.5s ease-in-out; /* Browsers that Support it */
+    
+            }
+            
+   
+#map tr  td:hover > div {
+    visibility:visible;
+    opacity: 0.8;
+    margin-top: -25px;
+    
+    /* Setting the transition property for all Browsers */
+				-moz-transition: all 0.5s ease-in-out; /* Firefox */
+                -webkit-transition: all 0.5s ease-in-out; /* Safari and Chrome */
+                -o-transition: all 0.5s ease-in-out;  /* Opera */
+                transition: all 0.5s ease-in-out; /* Browsers that Support it */
+    
+            }
+img#head {		
+       position: absolute;
+                display: inline;
+                margin-left: 60px;
+                padding: 5px;
+    visibility:hidden;
+                opacity: 0;
+                margin-top: -25px;
+    background: #F0F8FF;
+    font-size:1em;
+    
+    /* Setting the border-radius property for all Browsers */
+                -moz-border-radius: 5px; /* Firefox */
+                -webkit-border-radius: 5px; /* Safari and Chrome */
+                border-radius: 5px; /* Browsers that Support it like Opera */
+    
+    /* Setting the box-shadow property for all Browsers */
+                -moz-box-shadow: 0 0 8px gray; /* Firefox */
+                -webkit-box-shadow: 0 0 8px gray; /* Safari and Chrome */
+                 filter: progid:DXImageTransform.Microsoft.Shadow(color='#272229', Direction=135, Strength=3); /* IE */
+                box-shadow: 0 0 8px gray; /* Browsers that Support it like Opera */
+    /* Setting the transition property for all Browsers */
+                -moz-transition: all 0.5s ease-in-out; /* Firefox */
+                -webkit-transition: all 0.5s ease-in-out; /* Safari and Chrome */
+                -o-transition: all 0.5s ease-in-out; /* Opera */
+                transition: all 0.5s ease-in-out; /* Browsers that Support it */
+    
+            }
+            
+   
+div :hover > img#head {
+    visibility:visible;
+    opacity: 1;
+    margin-top: -25px;
+    
+    /* Setting the transition property for all Browsers */
+				-moz-transition: all 0.5s ease-in-out; /* Firefox */
+                -webkit-transition: all 0.5s ease-in-out; /* Safari and Chrome */
+                -o-transition: all 0.5s ease-in-out;  /* Opera */
+                transition: all 0.5s ease-in-out; /* Browsers that Support it */
+    
+            }
