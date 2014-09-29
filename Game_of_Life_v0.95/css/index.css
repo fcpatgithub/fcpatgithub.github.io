@@ -1,0 +1,35 @@
+.clearfix:after
+{
+	visibility: hidden;
+	display: block;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.clearfix
+{
+	zoom: 1;
+}
+
+body
+{
+	margin: 0;
+	padding: 0;
+	background-size: cover;
+}
+
+.back
+{
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 270px;
+	top: 390px;
+	outline: none;
+}
+
+#myCanvas {
+	position: absolute;
+	background: rgba(0,0,0,1);
+}

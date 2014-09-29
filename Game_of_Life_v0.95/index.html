@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Game of Life</title>
+		<script src="js/jquery2.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+	</head>
+	<body>
+		<div id="layout">
+			<div>
+				<div>
+					Width：
+					<input id="canvasWidth" type="text" onkeydown="if(event.keyCode==13)event.keyCode=9" onKeypress="if((event.keyCode<48 || event.keyCode>57)) event.returnValue=false"></input>
+					px
+				</div>
+				<div>
+					Height：
+					<input id="canvasHeight" type="text" onkeydown="if(event.keyCode==13)event.keyCode=9" onKeypress="if((event.keyCode<48 || event.keyCode>57)) event.returnValue=false"></input>
+					px
+				</div>
+				<div>
+					Speed：
+					<input id="speed" type="text" onkeydown="if(event.keyCode==13)event.keyCode=9" onKeypress="if((event.keyCode<48 || event.keyCode>57)) event.returnValue=false"></input>
+					ms
+				</div>
+				<div>
+					Cell：
+					<input id="probability" type="text" onkeydown="if(event.keyCode==13)event.keyCode=9" onKeypress="if((event.keyCode<48 || event.keyCode>57)) event.returnValue=false"></input>
+					%
+				</div>
+				<input id="refresh" type="button" value="Refresh"></input>
+				<input id="next" type="button" value="Next"></input>
+				<input id="auto" type="button" value="Auto"></input>
+				<input id="pause" type="button" value="Pause"></input>
+			</div>
+			<canvas id="myCanvas"></canvas>
+		</div>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
